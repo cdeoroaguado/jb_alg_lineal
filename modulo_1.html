@@ -1,0 +1,1261 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Módulo 1: Sistema de ecuaciones lineales &#8212; Visualización de datos</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=6c7211e7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modulo_1';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Álgebra lineal con Python" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.jpg" class="logo__image only-light" alt="Visualización de datos - Home"/>
+    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Visualización de datos - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Álgebra lineal con Python
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Módulo 1: Sistema de ecuaciones lineales</strong></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmodulo_1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/modulo_1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Módulo 1: Sistema de ecuaciones lineales</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python"><strong>1.1 Python</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion-a-python"><strong>1.1.1 Introducción a Python</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#google-colab"><strong>1.2 Google Colab</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#que-es-google-colab"><strong>1.2.1 ¿Qué es Google Colab?</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#por-que-usar-google-colab"><strong>1.2.2 ¿Por qué usar Google Colab?</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#por-que-deberias-considerar-usar-google-colab"><strong>1.2.3 ¿Por qué deberías considerar usar Google Colab?</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#primer-cuaderno-en-google-colab"><strong>1.2.4 Primer cuaderno en Google Colab</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uso-de-estructuras-de-datos-basicas-vectores-listas-matrices-diccionarios"><strong>1.4 Uso de estructuras de datos básicas (vectores, listas, matrices, diccionarios)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#que-es-numpy"><strong>1.4.1 ¿Qué es NumPy?</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instalacion-e-importacion"><strong>1.4.2 Instalación e Importación</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listas"><strong>1.4.3 Listas</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-con-numpy"><strong>1.4.4 Vector con NumPy</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tuplas"><strong>1.4.5 Tuplas</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conjuntos-sets"><strong>1.4.6 Conjuntos (Sets)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices"><strong>1.4.7 Matrices</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diccionarios"><strong>1.4.8 Diccionarios</strong></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="modulo-1-sistema-de-ecuaciones-lineales">
+<h1><strong>Módulo 1: Sistema de ecuaciones lineales</strong><a class="headerlink" href="#modulo-1-sistema-de-ecuaciones-lineales" title="Link to this heading">#</a></h1>
+<section id="python">
+<h2><strong>1.1 Python</strong><a class="headerlink" href="#python" title="Link to this heading">#</a></h2>
+<section id="introduccion-a-python">
+<h3><strong>1.1.1 Introducción a Python</strong><a class="headerlink" href="#introduccion-a-python" title="Link to this heading">#</a></h3>
+<p>Python fue creado por <strong>Guido van Rossum</strong>, un programador holandés, a finales de los años 80 y principios de los 90. La primera versión de Python, la 0.9.0, fue lanzada en 1991. Guido van Rossum nombró el lenguaje en honor al grupo de comedia británico Monty Python, del cual era un gran fan.</p>
+<p><strong>Python se creó con el objetivo de ser un lenguaje fácil de leer y escribir, con una sintaxis clara y concisa</strong>. A lo largo de los años, ha evolucionado y ganado popularidad hasta convertirse en uno de los lenguajes de programación más utilizados en el mundo.</p>
+<p>Python es un lenguaje de programación de alto nivel y de gran utilidad para la construcción de cualquier clase de soluciones informáticas.</p>
+<p>Algunas características que tiene python:</p>
+<ul class="simple">
+<li><p><strong>Legibilidad</strong>:
+Python utiliza una sintaxis clara y sencilla, lo que facilita la lectura y comprensión del código. Utiliza indentación (espacios o tabulaciones) para delimitar bloques de código, lo que promueve un estilo de programación estructurado y legible.</p></li>
+<li><p><strong>Lenguaje interpretado</strong>: Python es un lenguaje interpretado, diferenciándolo de otros lenguajes de programación de alto nivel como Java o C++. Al ser un lenguaje interpretado, no necesita ser compilado para ejecutar las instrucciones escritas. Por lo tanto, su ejecución no implica llevarlo a código de máquina.</p></li>
+<li><p><strong>Código abierto, multiplataforma y multiparadigma</strong>:
+Python es un lenguaje de programación de código abierto; es decir, puede ser utilizado por cualquier persona gracias a las licencias gratuitas. Además, es multiplataforma, ya que puede ser adaptado para diferentes contextos y sistemas operativos. También, se aplica en muchos paradigmas de programación, tales como programación imperativa y la orientada a objetos. Así mismo, cuenta con una sintaxis y legibilidad que lo hacen muy sencillo y cercano al lenguaje natural.</p></li>
+<li><p><strong>Tipado dinámico</strong>:
+Python es un lenguaje de tipado dinámico. Esto quiere decir que, cuando se utiliza una variable, no es necesario describir de forma explícita el tipo de datos, ya que la variable se adecúa a la forma en que se utilice durante la escritura del programa. La variable puede tomar distintos tipos de valores durante su ejecución; por ejemplo, la variable var puede tomar cuatro tipos diferentes (<code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">bool</span></code> y <code class="docutils literal notranslate"><span class="pre">float</span></code>), como se ve en el ejemplo siguiente:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var_1</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span> <span class="n">var_2</span> <span class="o">=</span> <span class="s1">&#39;Ciencia&#39;</span><span class="p">;</span> <span class="n">var_3</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span> <span class="n">var_4</span> <span class="o">=</span> <span class="mf">4.57</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">var_1</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">var_2</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">var_3</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">var_4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Bibliotecas y funciones</strong>:
+Python cuenta con una gran cantidad de bibliotecas y funciones que facilitan el trabajo de programación. Además, existe una gran comunidad que sirve de apoyo a los neófitos de Python y apoyan con información de las herramientas. Entre las bibliotecas, se destacan las utilizadas en la ciencia de datos: <code class="docutils literal notranslate"><span class="pre">Numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">Pandas</span></code>, <code class="docutils literal notranslate"><span class="pre">Matplotlib</span></code> y <code class="docutils literal notranslate"><span class="pre">Scikit-learn</span></code>.</p></li>
+<li><p><strong>Comunidad activa</strong>:
+Python cuenta con una comunidad de desarrolladores grande y activa que contribuye con bibliotecas, <code class="docutils literal notranslate"><span class="pre">frameworks</span></code> y herramientas adicionales. Esto significa que encontrarás una gran cantidad de recursos y soporte disponibles.</p></li>
+</ul>
+<p>Python se utiliza en una amplia gama de aplicaciones y dominios, algunos ejemplos son:</p>
+<ul class="simple">
+<li><p><strong>Desarrollo web</strong>: Python es ampliamente utilizado en el desarrollo web backend, con frameworks populares como Django y Flask.</p></li>
+<li><p><strong>Ciencia de datos</strong>: Python es el lenguaje preferido para el análisis de datos y la ciencia de datos debido a bibliotecas como <code class="docutils literal notranslate"><span class="pre">NumPy</span></code>, <code class="docutils literal notranslate"><span class="pre">Pandas</span></code>, <code class="docutils literal notranslate"><span class="pre">Matplotlib</span></code>, entre otras.</p></li>
+<li><p><strong>Inteligencia artificial y machine learning</strong>: Python es la elección principal para proyectos de IA y machine learning, gracias a bibliotecas como <code class="docutils literal notranslate"><span class="pre">TensorFlow</span></code> y <code class="docutils literal notranslate"><span class="pre">Scikit-learn</span></code>.</p></li>
+<li><p><strong>Automatización de tareas</strong>: Python se puede utilizar para automatizar tareas repetitivas, como procesamiento de archivos, <code class="docutils literal notranslate"><span class="pre">web</span> <span class="pre">scraping</span></code> y pruebas de software.</p></li>
+<li><p><strong>Desarrollo de juegos</strong>: Python se utiliza en el desarrollo de juegos simples, especialmente con bibliotecas como Pygame.</p></li>
+</ul>
+</section>
+</section>
+<section id="google-colab">
+<h2><strong>1.2 Google Colab</strong><a class="headerlink" href="#google-colab" title="Link to this heading">#</a></h2>
+<section id="que-es-google-colab">
+<h3><strong>1.2.1 ¿Qué es Google Colab?</strong><a class="headerlink" href="#que-es-google-colab" title="Link to this heading">#</a></h3>
+<p><strong>Google Colab</strong> (abreviatura de <em>Colaboratory</em>) es un entorno de <strong>Jupyter Notebook en la nube</strong>, desarrollado por Google Research. Te permite crear, ejecutar y compartir notebooks directamente desde el navegador, con una interfaz sencilla y sin necesidad de instalaciones ni configuración inicial.</p>
+<p>Si te interesa la <strong>ciencia de datos con Python</strong>, Colab es una excelente opción para comenzar y avanzar rápido: puedes escribir y ejecutar código de inmediato, y además cuentas con muchas de las bibliotecas más usadas (por ejemplo, para análisis de datos y aprendizaje automático) ya preinstaladas.</p>
+</section>
+<section id="por-que-usar-google-colab">
+<h3><strong>1.2.2 ¿Por qué usar Google Colab?</strong><a class="headerlink" href="#por-que-usar-google-colab" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>No requiere instalación:</strong> funciona en el navegador.</p></li>
+<li><p><strong>Configuración mínima:</strong> listo para programar desde el primer minuto.</p></li>
+<li><p><strong>Ecosistema de Python:</strong> incluye librerías populares preinstaladas.</p></li>
+<li><p><strong>Colaboración y compartición:</strong> facilita trabajar y compartir notebooks.</p></li>
+</ul>
+<p>En las siguientes secciones, aprenderás más sobre las principales funciones de Google Colab y cómo aprovecharlo en tus proyectos.</p>
+</section>
+<section id="por-que-deberias-considerar-usar-google-colab">
+<h3><strong>1.2.3 ¿Por qué deberías considerar usar Google Colab?</strong><a class="headerlink" href="#por-que-deberias-considerar-usar-google-colab" title="Link to this heading">#</a></h3>
+<p>Además de ser un entorno que funciona directamente en el navegador (solo necesitas iniciar sesión con tu cuenta de Google), <strong>Google Colab</strong> ofrece varias funciones que lo hacen especialmente útil para la comunidad. Algunas de sus principales ventajas son:</p>
+<ul class="simple">
+<li><p><strong>Bibliotecas preinstaladas</strong><br />
+Empieza a trabajar sin instalar nada: muchas librerías populares ya vienen listas para usarse.</p></li>
+<li><p><strong>Intercambio y colaboración sencillos</strong><br />
+Comparte tus cuadernos fácilmente y trabaja en equipo en tiempo real.</p></li>
+<li><p><strong>Integración con GitHub</strong><br />
+Puedes abrir notebooks desde repositorios, guardarlos y mantener tu trabajo conectado a tus proyectos.</p></li>
+<li><p><strong>Trabajo con datos desde diversas fuentes</strong><br />
+Importa datos desde Drive, archivos locales, enlaces web y otros servicios.</p></li>
+<li><p><strong>Guardado automático y control de versiones</strong><br />
+Tu progreso se guarda automáticamente y puedes mantener copias o versiones de tu cuaderno.</p></li>
+<li><p><strong>Acceso a aceleradores de hardware como GPU y TPU</strong><br />
+Ideal para tareas intensivas como <em>machine learning</em> o procesamiento acelerado.</p></li>
+</ul>
+</section>
+<section id="primer-cuaderno-en-google-colab">
+<h3><strong>1.2.4 Primer cuaderno en Google Colab</strong><a class="headerlink" href="#primer-cuaderno-en-google-colab" title="Link to this heading">#</a></h3>
+<p>La mejor manera de entender algo es probándolo uno mismo. Empecemos creando nuestro primer cuaderno de colaboración:</p>
+<ol class="arabic simple">
+<li><p>Para empezar los primero que debemos hacer es tener una cuenta de Google (Gmail). Y además inicia sesión con tu cuenta de Google.</p></li>
+<li><p>Sigue los siguientes pasos para abrir el primer cuaderno</p></li>
+</ol>
+<p><img alt="gc_1" src="_images/gc1.png" /></p>
+<p><img alt="gc_2" src="_images/gc2.png" /></p>
+<p><img alt="gc_3" src="_images/gc3.png" /></p>
+<ol class="arabic simple" start="3">
+<li><p>Después de crear un cuaderno nuevo, puedes renombrarlo con el nombre que prefieras. Ya estás listo para codificar en el proyecto. Google Colab es un entorno autónomo. Permite escribir código Python y texto (utilizando celdas Markdown) para incluir texto enriquecido y contenido multimedia, como se muestra a continuación. Esto facilita la lectura al añadir instrucciones paso a paso del proyecto.</p></li>
+</ol>
+<p><img alt="gc_4" src="_images/gc4.png" /></p>
+<ol class="arabic simple" start="4">
+<li><p>Tu cuaderno está hecho de celdas. Hay dos tipos principales:</p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>Celda de código</strong>: sirve para ejecutar Python</p></li>
+</ul>
+<p><img alt="gc_6" src="_images/gc6.png" /></p>
+<ul class="simple">
+<li><p>**Celda de texto (Markdown): Sirve para escribir explicaciones, títulos, listas, etc. Ideal para documentar lo que se hace</p></li>
+</ul>
+<p><img alt="gc_7" src="_images/gc7.png" /></p>
+<ol class="arabic simple" start="5">
+<li><p>Estos cuadernos estarán almacenados en google drive</p></li>
+</ol>
+<p><img alt="gc_5" src="_images/gc5.png" /></p>
+<p>Otra forma de abrir un cuaderno en Colab es con el siguiente enlace <a class="reference external" href="https://colab.research.google.com/">colab.research.google.com</a>. Veras la siguiente pantalla</p>
+<ol class="arabic simple">
+<li><p>Para escribir y ejecutar código, debes iniciar sesión con tus credenciales de Google. Este es el único paso necesario. No se requiere ninguna otra configuración.</p></li>
+</ol>
+<p><img alt="gc_8" src="_images/gc8.png" /></p>
+<ol class="arabic simple" start="2">
+<li><p>Una vez que haya iniciado sesión en Colab, puede crear un nuevo cuaderno haciendo clic en “Archivo” → “Nuevo cuaderno”, como se muestra a continuación:</p></li>
+</ol>
+<p><img alt="gc_9" src="_images/gc9.png" /></p>
+</section>
+</section>
+<section id="uso-de-estructuras-de-datos-basicas-vectores-listas-matrices-diccionarios">
+<h2><strong>1.4 Uso de estructuras de datos básicas (vectores, listas, matrices, diccionarios)</strong><a class="headerlink" href="#uso-de-estructuras-de-datos-basicas-vectores-listas-matrices-diccionarios" title="Link to this heading">#</a></h2>
+<section id="que-es-numpy">
+<h3><strong>1.4.1 ¿Qué es NumPy?</strong><a class="headerlink" href="#que-es-numpy" title="Link to this heading">#</a></h3>
+<p><strong>NumPy</strong> (Numerical Python) es una biblioteca fundamental para la computación científica en Python. Proporciona:</p>
+<ul class="simple">
+<li><p><strong>Arrays multidimensionales</strong> (ndarrays): Estructuras de datos eficientes para almacenar colecciones de números</p></li>
+<li><p><strong>Operaciones vectorizadas</strong>: Realizar operaciones en arrays sin necesidad de bucles explícitos</p></li>
+<li><p><strong>Funciones matemáticas</strong>: Operaciones sobre arrays como suma, resta, multiplicación, etc.</p></li>
+<li><p><strong>Álgebra lineal</strong>: Funciones para operaciones matriciales</p></li>
+<li><p><strong>Generador de números aleatorios</strong>: Crear datos aleatorios para análisis y simulaciones</p></li>
+</ul>
+<p>NumPy es la base para muchas otras bibliotecas como Pandas, Matplotlib y Scikit-learn.</p>
+</section>
+<section id="instalacion-e-importacion">
+<h3><strong>1.4.2 Instalación e Importación</strong><a class="headerlink" href="#instalacion-e-importacion" title="Link to this heading">#</a></h3>
+<p>Para usar NumPy, primero debe estar instalado (generalmente viene pre-instalado en Google Colab):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importar NumPy - la forma estándar es usar &#39;np&#39; como alias</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Verificar la versión</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Versión de NumPy:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="listas">
+<h3><strong>1.4.3 Listas</strong><a class="headerlink" href="#listas" title="Link to this heading">#</a></h3>
+<p>Una <strong>lista</strong> es una secuencia ordenada de elementos, que pueden ser números, caracteres o cualquier otro tipo de dato.</p>
+<p>Las características de una lista son:</p>
+<ul class="simple">
+<li><p><strong>Ordenadas</strong>: Los elementos mantienen su orden</p></li>
+<li><p><strong>Mutables</strong>: Se pueden modificar, agregar o eliminar elementos</p></li>
+<li><p><strong>Heterogéneas</strong>: Pueden contener elementos de diferentes tipos</p></li>
+<li><p><strong>Indexadas</strong>: Se accede a los elementos por su posición</p></li>
+</ul>
+<p>Algunas operaciones comunes:</p>
+<ul class="simple">
+<li><p><strong>Acceso a elementos por índice</strong>:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un lista</span>
+<span class="n">lista</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+
+<span class="c1"># Acceder al primer elemento (índice 0)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lista</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># Output: 10</span>
+
+<span class="c1"># Acceder al tercer elemento (índice 2)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lista</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>  <span class="c1"># Output: 30</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Modificación de elementos</strong>:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear una lista</span>
+<span class="n">lista</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+
+<span class="c1"># Modificar el segundo elemento (índice 1)</span>
+<span class="n">lista</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span>  <span class="c1"># Output: [10, 25, 30, 40, 50]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="vector-con-numpy">
+<h3><strong>1.4.4 Vector con NumPy</strong><a class="headerlink" href="#vector-con-numpy" title="Link to this heading">#</a></h3>
+<p>En NumPy, un “vector” normalmente es un arreglo 1D (<code class="docutils literal notranslate"><span class="pre">ndarray</span></code>). Hay varias formas comunes de crearlo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear vector (array) desde lista</span>
+<span class="n">lista</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">arr1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Array desde lista:&quot;</span><span class="p">,</span> <span class="n">arr1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tipo:&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">arr1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dtype:&quot;</span><span class="p">,</span> <span class="n">arr1</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Suma, resta, multiplicación, división de vectores, producto punto</strong>:
+En programación científica, estas operaciones a menudo se realizan utilizando bibliotecas como <code class="docutils literal notranslate"><span class="pre">NumPy</span></code> para una mayor eficiencia y facilidad. Por ejemplo:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># importar biblioteca</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Crear dos vectores (arrays de NumPy)</span>
+<span class="n">vector1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">vector2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+
+<span class="c1"># Suma de vectores</span>
+<span class="n">suma</span> <span class="o">=</span> <span class="n">vector1</span> <span class="o">+</span> <span class="n">vector2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Suma:&quot;</span><span class="p">,</span> <span class="n">suma</span><span class="p">)</span>  <span class="c1"># Output: [5 7 9]</span>
+
+<span class="c1"># Resta de vectores</span>
+<span class="n">resta</span> <span class="o">=</span> <span class="n">vector1</span> <span class="o">-</span> <span class="n">vector2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Resta:&quot;</span><span class="p">,</span> <span class="n">resta</span><span class="p">)</span>  <span class="c1"># Output: [-3 -3 -3]</span>
+
+<span class="c1"># Multiplicación de vectores</span>
+<span class="n">multiplicacion</span> <span class="o">=</span> <span class="n">vector1</span> <span class="o">*</span> <span class="n">vector2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Multiplicación:&quot;</span><span class="p">,</span> <span class="n">multiplicacion</span><span class="p">)</span>  <span class="c1"># Output: [ 4 10 18]</span>
+
+<span class="c1"># División de vectores</span>
+<span class="n">division</span> <span class="o">=</span> <span class="n">vector1</span> <span class="o">/</span> <span class="n">vector2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;División:&quot;</span><span class="p">,</span> <span class="n">division</span><span class="p">)</span>  <span class="c1"># Output: [0.25 0.4  0.5 ]</span>
+
+<span class="c1"># producto punto de vectores </span>
+<span class="n">producto_punto</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">vector1</span><span class="p">,</span> <span class="n">vector2</span><span class="p">)</span>      <span class="c1"># también sirve: a @ b</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Producto punto:&quot;</span><span class="p">,</span> <span class="n">producto_punto</span><span class="p">)</span> 
+
+<span class="c1"># otra forma de producto punto de vectores </span>
+<span class="n">producto_punto</span> <span class="o">=</span> <span class="n">vector1</span> <span class="o">@</span> <span class="n">vector2</span>      <span class="c1"># también sirve: a @ b</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Producto punto:&quot;</span><span class="p">,</span><span class="n">producto_punto</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Suma: [5 7 9]
+Resta: [-3 -3 -3]
+Multiplicación: [ 4 10 18]
+División: [0.25 0.4  0.5 ]
+Producto punto: 32
+Producto punto: 32
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Agregar elementos a un vector</strong>:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un vector</span>
+<span class="n">vector</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+
+<span class="c1"># Agregar un nuevo elemento al final del vector</span>
+<span class="n">vector</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span>  <span class="c1"># Output: [10, 20, 30, 40]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Eliminar elementos</strong>:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># crear vector (lista)</span>
+<span class="n">lista</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+
+<span class="c1"># remove(): Elimina la primera aparición de un valor en la lista.</span>
+<span class="n">lista</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span>  <span class="c1"># Output: [1, 3, 4]</span>
+
+<span class="c1"># pop(): Elimina y devuelve el elemento en el índice especificado (por defecto, el último)</span>
+<span class="n">elemento</span> <span class="o">=</span> <span class="n">lista</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">elemento</span><span class="p">)</span>  <span class="c1"># Output: 4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span>  <span class="c1"># Output: [1, 2, 3]</span>
+
+<span class="n">elemento</span> <span class="o">=</span> <span class="n">lista</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">elemento</span><span class="p">)</span>  <span class="c1"># Output: 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span>  <span class="c1"># Output: [1, 3]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Ordenar elementos</strong>:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># crear lista</span>
+<span class="n">lista</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># sort(): Ordena los elementos de la lista en su lugar.</span>
+<span class="n">lista</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span>  <span class="c1"># Output: [1, 2, 3, 4]</span>
+
+<span class="c1"># sorted(): Devuelve una nueva lista ordenada sin modificar la original.</span>
+<span class="n">lista_ordenada</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lista_ordenada</span><span class="p">)</span>  <span class="c1"># Output: [1, 2, 3, 4]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Acceder a elementos por índice:</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># crear lista</span>
+<span class="n">lista</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">lista</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Modificar elementos</strong>:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># crear lista</span>
+<span class="n">lista</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+
+<span class="n">lista</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span>  <span class="c1"># Output: [10, 25, 30, 40]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="tuplas">
+<h3><strong>1.4.5 Tuplas</strong><a class="headerlink" href="#tuplas" title="Link to this heading">#</a></h3>
+<p>Las <strong>tuplas</strong> son similares a las listas, pero <strong>inmutables</strong> (no se pueden modificar una vez creadas). Se utilizan para almacenar colecciones de datos que no deben cambiar.</p>
+<p><strong>Características:</strong></p>
+<ul class="simple">
+<li><p><strong>Ordenadas</strong>: Mantienen el orden de los elementos</p></li>
+<li><p><strong>Inmutables</strong>: No se pueden modificar, agregar o eliminar elementos</p></li>
+<li><p><strong>Se definen con paréntesis</strong>: <code class="docutils literal notranslate"><span class="pre">(elemento1,</span> <span class="pre">elemento2,</span> <span class="pre">...)</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear tuplas</span>
+<span class="n">tupla_numeros</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">tupla_vacia</span> <span class="o">=</span> <span class="p">()</span>
+<span class="n">tupla_un_elemento</span> <span class="o">=</span> <span class="p">(</span><span class="mi">42</span><span class="p">,)</span>  <span class="c1"># Nota la coma</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tupla de números:&quot;</span><span class="p">,</span> <span class="n">tupla_numeros</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tupla vacía:&quot;</span><span class="p">,</span> <span class="n">tupla_vacia</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tupla de un elemento:&quot;</span><span class="p">,</span> <span class="n">tupla_un_elemento</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Acceso a elementos (igual que listas)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Primer elemento:&quot;</span><span class="p">,</span> <span class="n">tupla_numeros</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Últimos dos elementos:&quot;</span><span class="p">,</span> <span class="n">tupla_numeros</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Las tuplas son inmutables - esto causaría error si lo ejecutáramos:</span>
+<span class="c1"># tupla_numeros[0] = 10  # ❌ TypeError: &#39;tuple&#39; object does not support item assignment</span>
+
+<span class="c1"># Pero podemos usar funciones como count() y index()</span>
+<span class="n">tupla_mixed</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Cuántas veces aparece 2:&quot;</span><span class="p">,</span> <span class="n">tupla_mixed</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Índice de la primera aparición de 3:&quot;</span><span class="p">,</span> <span class="n">tupla_mixed</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="conjuntos-sets">
+<h3><strong>1.4.6 Conjuntos (Sets)</strong><a class="headerlink" href="#conjuntos-sets" title="Link to this heading">#</a></h3>
+<p>Los <strong>conjuntos</strong> son colecciones de elementos únicos y sin orden. Son útiles para operaciones matemáticas como unión, intersección y diferencia.</p>
+<p><strong>Características:</strong></p>
+<ul class="simple">
+<li><p><strong>Elementos únicos</strong>: No pueden haber duplicados</p></li>
+<li><p><strong>Sin orden</strong>: No tienen posiciones específicas</p></li>
+<li><p><strong>Mutables</strong>: Se pueden agregar o eliminar elementos</p></li>
+<li><p><strong>Se definen con llaves</strong>: <code class="docutils literal notranslate"><span class="pre">{elemento1,</span> <span class="pre">elemento2,</span> <span class="pre">...}</span></code> o <code class="docutils literal notranslate"><span class="pre">set()</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear conjuntos</span>
+<span class="n">conjunto</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+<span class="n">conjunto_duplicados</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>  <span class="c1"># Los duplicados se eliminan automáticamente</span>
+<span class="n">conjunto_vacio</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>  <span class="c1"># Se usa set(), no {}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Conjunto:&quot;</span><span class="p">,</span> <span class="n">conjunto</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Conjunto desde lista con duplicados:&quot;</span><span class="p">,</span> <span class="n">conjunto_duplicados</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Conjunto vacío:&quot;</span><span class="p">,</span> <span class="n">conjunto_vacio</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Agregar y remover elementos</span>
+<span class="n">conjunto</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">conjunto</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Después de agregar 6 y remover 3:&quot;</span><span class="p">,</span> <span class="n">conjunto</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Operaciones de conjuntos</span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+<span class="n">B</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Conjunto A:&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Conjunto B:&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unión (A | B):&quot;</span><span class="p">,</span> <span class="n">A</span> <span class="o">|</span> <span class="n">B</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Intersección (A &amp; B):&quot;</span><span class="p">,</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">B</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Diferencia (A - B):&quot;</span><span class="p">,</span> <span class="n">A</span> <span class="o">-</span> <span class="n">B</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Diferencia simétrica (A ^ B):&quot;</span><span class="p">,</span> <span class="n">A</span> <span class="o">^</span> <span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verificar pertenencia</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">¿2 está en A?:&quot;</span><span class="p">,</span> <span class="mi">2</span> <span class="ow">in</span> <span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;¿5 está en A?:&quot;</span><span class="p">,</span> <span class="mi">5</span> <span class="ow">in</span> <span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="matrices">
+<h3><strong>1.4.7 Matrices</strong><a class="headerlink" href="#matrices" title="Link to this heading">#</a></h3>
+<p>Las <strong>matrices</strong> son arreglos rectangulares de elementos, es decir,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = \left(\begin{matrix}
+a_{11} &amp; a_{12} &amp; ⋯ &amp; a_{1n}\\
+a_{21} &amp; a_{22} &amp; ⋯ &amp; a_{2n}\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+a_{m1} &amp; a_{m2} &amp; ⋯ &amp; a_{mn}\\
+\end{matrix}
+\right)_{m \times n}
+\end{split}\]</div>
+<p>donde <span class="math notranslate nohighlight">\(m\)</span> es el número de filas y <span class="math notranslate nohighlight">\(n\)</span> es el número de columnas</p>
+<p>En Python, las matrices pueden ser implementadas usando listas de listas o utilizando bibliotecas como <strong>NumPy</strong>, que proporciona una funcionalidad más eficiente para el manejo de matrices.</p>
+<p>Las matrices poseen varias características que las hacen útiles para muchas aplicaciones, especialmente en matemáticas, ciencia de datos, y programación científica:</p>
+<ul class="simple">
+<li><p>Dimensionalidad: Las matrices son bidimensionales, organizadas en filas y columnas. Además, se pueden extender a más dimensiones, formando tensores en contextos más avanzados.</p></li>
+<li><p>Homogeneidad: Los elementos de una matriz deben ser del mismo tipo (e.g., todos enteros, todos flotantes).</p></li>
+<li><p>Indexación: Los elementos de una matriz se acceden utilizando un par de índices: uno para la fila y otro para la columna.</p></li>
+<li><p>Mutabilidad: Las matrices pueden ser modificadas después de su creación, permitiendo la actualización de elementos individuales o la reasignación de filas y columnas completas.</p></li>
+<li><p>Operaciones Matemáticas: Las matrices admiten una variedad de operaciones matemáticas, tales como suma, resta, multiplicación (tanto elemento a elemento como producto matricial), y transposición. Estas operaciones son esenciales para cálculos algebraicos lineales y análisis numérico.</p></li>
+</ul>
+<p>Transposición: La transposición de una matriz implica intercambiar sus filas por columnas, y es una operación comúnmente utilizada en diversas aplicaciones matemáticas y científicas.</p>
+<ul class="simple">
+<li><p>Determinante y Rango: Para matrices cuadradas (mismo número de filas y columnas), se pueden calcular propiedades como el determinante y el rango, que tienen importantes aplicaciones en álgebra lineal.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Creacion de matriz</span>
+<span class="n">matriz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="n">matriz</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Acceso a elementos por filas y columnas:</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Acceder al elemento en la primera fila, segunda columna</span>
+<span class="n">matriz</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Acceder al elemento en la tercera fila, primera columna</span>
+<span class="n">matriz</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Acceder a la segunda columna</span>
+<span class="n">matriz</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Acceder a la segunda fila</span>
+<span class="n">fila</span> <span class="o">=</span> <span class="n">matriz</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple">
+<li><p>Hagamos un ejemplo de sistema de ecuaciones lineales</p></li>
+</ol>
+<div class="attention admonition">
+<p class="admonition-title">**Ejemplo **</p>
+<p>Resolver el siguiente sistema de ecuaciones lineales:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{cases}
+2x+y+z&amp;=3\\
+-x+2y+2z&amp;=1\\
+x-y-3z&amp;=-6 
+\end{cases}\end{split}\]</div>
+</div>
+<p><strong>Solución</strong>.</p>
+<p>Primero debemos convertir el SEL en una matriz aumentada y de alli, obtener la matriz de coeficientes y terminos independientes:</p>
+<ul class="simple">
+<li><p>La matriz aumentada es:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[\begin{array}{ccc|c}
+2 &amp; 1 &amp; 1 &amp; 3\\
+-1 &amp; 2 &amp; 2 &amp; 1\\
+1 &amp; -1 &amp; -3 &amp; -6
+\end{array}\right]
+\end{split}\]</div>
+<ul class="simple">
+<li><p>La matriz de coeficientes es:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A=\begin{bmatrix}
+2 &amp; 1 &amp; 1\\
+-1 &amp; 2 &amp; 2\\
+1 &amp; -1 &amp; -3
+\end{bmatrix}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>El vector de términos independientes es:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{b}=\begin{bmatrix}
+3\\
+1\\
+-6
+\end{bmatrix}
+\end{split}\]</div>
+<p>Ahora, escribamos las matrices de coeficientes y el vector de términos independientes con python usando <code class="docutils literal notranslate"><span class="pre">NumPy</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Matriz de coeficientes A y vector b</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mi">2</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">],</span>
+              <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">],</span>
+              <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="c1"># Resolver Ax = b</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solución [x, y, z]:&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Solución [x, y, z]: [ 1. -2.  3.]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="diccionarios">
+<h3><strong>1.4.8 Diccionarios</strong><a class="headerlink" href="#diccionarios" title="Link to this heading">#</a></h3>
+<p>Los <strong>diccionarios</strong> son una estructura de datos que almacena pares de clave-valor. Cada clave es única y se utiliza para acceder a su valor asociado. Los diccionarios son útiles cuando se necesita un mapeo entre elementos, como por ejemplo, asociar nombres con números de teléfono.</p>
+<p>Las características de los diccionarios son:</p>
+<ul class="simple">
+<li><p><strong>Clave-Valor</strong>: Cada elemento en un diccionario es un par clave-valor. Las claves deben ser únicas y de un tipo de datos inmutable (como cadenas, números o tuplas), mientras que los valores pueden ser de cualquier tipo de datos, incluso listas o otros diccionarios.</p></li>
+<li><p><strong>Acceso Rápido</strong>: Los diccionarios permiten un acceso rápido a los valores mediante sus claves, lo que los hace muy eficientes para búsquedas y actualizaciones.</p></li>
+<li><p><strong>No Ordenado</strong>: A partir de Python 3.7, mantienen el orden de inserción, pero esto no es algo en lo que debas confiar en versiones anteriores.</p></li>
+<li><p><strong>Mutable</strong>: Los diccionarios pueden ser modificados después de su creación, permitiendo agregar, eliminar o cambiar pares clave-valor.</p></li>
+<li><p><strong>Flexible</strong>: Los valores en un diccionario pueden ser de cualquier tipo de datos, y los diccionarios pueden incluso anidarse dentro de otros diccionarios.:</p></li>
+</ul>
+<p>Algunos ejemplos de diccionarios:</p>
+<ul class="simple">
+<li><p><strong>Creación de un diccionarios</strong>:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un diccionario vacío</span>
+<span class="n">mi_diccionario</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># Crear un diccionario con algunos pares clave-valor</span>
+<span class="n">estudiante</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;nombre&quot;</span><span class="p">:</span> <span class="s2">&quot;Juan&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;edad&quot;</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
+    <span class="s2">&quot;carrera&quot;</span><span class="p">:</span> <span class="s2">&quot;Ingeniería&quot;</span>
+<span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">estudiante</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Acceso a un valor</strong>:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Acceder al valor asociado con la clave &quot;nombre&quot;</span>
+<span class="n">nombre</span> <span class="o">=</span> <span class="n">estudiante</span><span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nombre</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Modificar un valor</strong>:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cambiar el valor asociado con la clave &quot;edad&quot;</span>
+<span class="n">estudiante</span><span class="p">[</span><span class="s2">&quot;edad&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">22</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">estudiante</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Agregar un nuevo par clave-valor</strong>:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Agregar una nueva clave &quot;promedio&quot; con su valor</span>
+<span class="n">estudiante</span><span class="p">[</span><span class="s2">&quot;promedio&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">4.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">estudiante</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Eliminar un par clave-valor</strong>:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Eliminar la clave &quot;carrera&quot; y su valor asociado</span>
+<span class="k">del</span> <span class="n">estudiante</span><span class="p">[</span><span class="s2">&quot;carrera&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">estudiante</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Recorrer un diccionario</strong>:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Recorrer las claves y valores de un diccionario</span>
+<span class="k">for</span> <span class="n">clave</span><span class="p">,</span> <span class="n">valor</span> <span class="ow">in</span> <span class="n">estudiante</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">clave</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">valor</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Comprobar si una clave existe</strong>:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="s2">&quot;nombre&quot;</span> <span class="ow">in</span> <span class="n">estudiante</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El nombre del estudiante es:&quot;</span><span class="p">,</span> <span class="n">estudiante</span><span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Diccionarios anidados</strong>:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un diccionario anidado</span>
+<span class="n">clases</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Matemáticas&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;Profesor&quot;</span><span class="p">:</span> <span class="s2">&quot;Sr. Pérez&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Horario&quot;</span><span class="p">:</span> <span class="s2">&quot;8:00 - 10:00&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;Historia&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;Profesor&quot;</span><span class="p">:</span> <span class="s2">&quot;Sra. García&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Horario&quot;</span><span class="p">:</span> <span class="s2">&quot;10:00 - 12:00&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Acceder a datos en un diccionario anidado</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">clases</span><span class="p">[</span><span class="s2">&quot;Matemáticas&quot;</span><span class="p">][</span><span class="s2">&quot;Profesor&quot;</span><span class="p">])</span>  
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Álgebra lineal con Python</strong></p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python"><strong>1.1 Python</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion-a-python"><strong>1.1.1 Introducción a Python</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#google-colab"><strong>1.2 Google Colab</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#que-es-google-colab"><strong>1.2.1 ¿Qué es Google Colab?</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#por-que-usar-google-colab"><strong>1.2.2 ¿Por qué usar Google Colab?</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#por-que-deberias-considerar-usar-google-colab"><strong>1.2.3 ¿Por qué deberías considerar usar Google Colab?</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#primer-cuaderno-en-google-colab"><strong>1.2.4 Primer cuaderno en Google Colab</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uso-de-estructuras-de-datos-basicas-vectores-listas-matrices-diccionarios"><strong>1.4 Uso de estructuras de datos básicas (vectores, listas, matrices, diccionarios)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#que-es-numpy"><strong>1.4.1 ¿Qué es NumPy?</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instalacion-e-importacion"><strong>1.4.2 Instalación e Importación</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listas"><strong>1.4.3 Listas</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-con-numpy"><strong>1.4.4 Vector con NumPy</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tuplas"><strong>1.4.5 Tuplas</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conjuntos-sets"><strong>1.4.6 Conjuntos (Sets)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices"><strong>1.4.7 Matrices</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diccionarios"><strong>1.4.8 Diccionarios</strong></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Carlos de Oro Aguado
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Msc Carlos de Oro Aguado.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
