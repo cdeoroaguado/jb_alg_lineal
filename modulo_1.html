@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Módulo 1: Sistema de ecuaciones lineales &#8212; Visualización de datos</title>
+    <title>Módulo 1: Conceptos de Python &#8212; Algebra lineal con Python</title>
   
   
   
@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=6c7211e7" />
   
@@ -65,6 +65,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Módulo 2: Matrices y Sistema de ecuaciones lineales" href="modulo_2.html" />
     <link rel="prev" title="Álgebra lineal con Python" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -157,8 +158,8 @@
       
     
     
-    <img src="_static/logo.jpg" class="logo__image only-light" alt="Visualización de datos - Home"/>
-    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Visualización de datos - Home"/>`);</script>
+    <img src="_static/logo.jpg" class="logo__image only-light" alt="Algebra lineal con Python - Home"/>
+    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Algebra lineal con Python - Home"/>`);</script>
   
   
 </a></div>
@@ -184,7 +185,8 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Módulo 1: Sistema de ecuaciones lineales</strong></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Módulo 1: Conceptos de Python</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modulo_2.html"><strong>Módulo 2: Matrices y Sistema de ecuaciones lineales</strong></a></li>
 </ul>
 
     </div>
@@ -370,7 +372,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Módulo 1: Sistema de ecuaciones lineales</h1>
+    <h1>Módulo 1: Conceptos de Python</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -398,8 +400,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-con-numpy"><strong>1.3.4 Vector con NumPy</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tuplas"><strong>1.3.5 Tuplas</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conjuntos"><strong>1.3.6 Conjuntos</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices"><strong>1.3.7 Matrices</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diccionarios"><strong>1.3.8 Diccionarios</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diccionarios"><strong>1.3.7 Diccionarios</strong></a></li>
 </ul>
 </li>
 </ul>
@@ -413,8 +414,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="modulo-1-sistema-de-ecuaciones-lineales">
-<h1><strong>Módulo 1: Sistema de ecuaciones lineales</strong><a class="headerlink" href="#modulo-1-sistema-de-ecuaciones-lineales" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="modulo-1-conceptos-de-python">
+<h1><strong>Módulo 1: Conceptos de Python</strong><a class="headerlink" href="#modulo-1-conceptos-de-python" title="Link to this heading">#</a></h1>
 <section id="python">
 <h2><strong>1.1 Python</strong><a class="headerlink" href="#python" title="Link to this heading">#</a></h2>
 <section id="introduccion-a-python">
@@ -991,231 +992,8 @@ Producto punto: 32
 </div>
 </div>
 </section>
-<section id="matrices">
-<h3><strong>1.3.7 Matrices</strong><a class="headerlink" href="#matrices" title="Link to this heading">#</a></h3>
-<p>Las <strong>matrices</strong> son arreglos rectangulares de elementos, es decir,</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-A = \begin{bmatrix}
-a_{11} &amp; a_{12} &amp; ⋯ &amp; a_{1n}\\
-a_{21} &amp; a_{22} &amp; ⋯ &amp; a_{2n}\\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
-a_{m1} &amp; a_{m2} &amp; ⋯ &amp; a_{mn}\\
-\end{bmatrix}
-_{m \times n}
-\end{split}\]</div>
-<p>donde <span class="math notranslate nohighlight">\(m\)</span> es el número de filas y <span class="math notranslate nohighlight">\(n\)</span> es el número de columnas</p>
-<p>En Python, las matrices pueden ser implementadas usando listas de listas o utilizando bibliotecas como <strong>NumPy</strong>, que proporciona una funcionalidad más eficiente para el manejo de matrices.</p>
-<p>Las matrices poseen varias características que las hacen útiles para muchas aplicaciones, especialmente en matemáticas, ciencia de datos, y programación científica:</p>
-<ul class="simple">
-<li><p>Dimensionalidad: Las matrices son bidimensionales, organizadas en filas y columnas. Además, se pueden extender a más dimensiones, formando tensores en contextos más avanzados.</p></li>
-<li><p>Homogeneidad: Los elementos de una matriz deben ser del mismo tipo (e.g., todos enteros, todos flotantes).</p></li>
-<li><p>Indexación: Los elementos de una matriz se acceden utilizando un par de índices: uno para la fila y otro para la columna.</p></li>
-<li><p>Mutabilidad: Las matrices pueden ser modificadas después de su creación, permitiendo la actualización de elementos individuales o la reasignación de filas y columnas completas.</p></li>
-<li><p>Operaciones Matemáticas: Las matrices admiten una variedad de operaciones matemáticas, tales como suma, resta, multiplicación (tanto elemento a elemento como producto matricial), y transposición. Estas operaciones son esenciales para cálculos algebraicos lineales y análisis numérico.</p></li>
-</ul>
-<p>Transposición: La transposición de una matriz implica intercambiar sus filas por columnas, y es una operación comúnmente utilizada en diversas aplicaciones matemáticas y científicas.</p>
-<ul class="simple">
-<li><p>Determinante y Rango: Para matrices cuadradas (mismo número de filas y columnas), se pueden calcular propiedades como el determinante y el rango, que tienen importantes aplicaciones en álgebra lineal.</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="c1"># Creacion de matriz</span>
-<span class="n">matriz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
-<span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-
-<span class="n">matriz</span>
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p><strong>Acceso a elementos por filas y columnas:</strong></p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Acceder al elemento en la primera fila, segunda columna</span>
-<span class="n">matriz</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
-
-<span class="c1"># Acceder al elemento en la tercera fila, primera columna</span>
-<span class="n">matriz</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="c1"># Acceder a la segunda columna</span>
-<span class="n">matriz</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
-
-<span class="c1"># Acceder a la segunda fila</span>
-<span class="n">fila</span> <span class="o">=</span> <span class="n">matriz</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<ol class="arabic simple">
-<li><p>Hagamos un ejemplo de sistema de ecuaciones lineales</p></li>
-</ol>
-<div class="attention admonition">
-<p class="admonition-title"><strong>Ejemplo</strong></p>
-<p>Resolver el siguiente sistema de ecuaciones lineales:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{cases}
-2x+y+z&amp;=3\\
--x+2y+2z&amp;=1\\
-x-y-3z&amp;=-6 
-\end{cases}\end{split}\]</div>
-</div>
-<p><strong>Solución</strong>.</p>
-<p>Primero debemos convertir el SEL en una matriz aumentada y de alli, obtener la matriz de coeficientes y terminos independientes:</p>
-<ul class="simple">
-<li><p>La matriz aumentada es:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\left[\begin{array}{ccc|c}
-2 &amp; 1 &amp; 1 &amp; 3\\
--1 &amp; 2 &amp; 2 &amp; 1\\
-1 &amp; -1 &amp; -3 &amp; -6
-\end{array}\right]
-\end{split}\]</div>
-<ul class="simple">
-<li><p>La matriz de coeficientes es:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-A=\begin{bmatrix}
-2 &amp; 1 &amp; 1\\
--1 &amp; 2 &amp; 2\\
-1 &amp; -1 &amp; -3
-\end{bmatrix}
-\end{split}\]</div>
-<ul class="simple">
-<li><p>El vector de términos independientes es:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\mathbf{b}=\begin{bmatrix}
-3\\
-1\\
--6
-\end{bmatrix}
-\end{split}\]</div>
-<p>Ahora, escribamos las matrices de coeficientes y el vector de términos independientes con python usando <code class="docutils literal notranslate"><span class="pre">NumPy</span></code></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Matriz de coeficientes A y vector b</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mi">2</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">],</span>
-              <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">],</span>
-              <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-
-<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-
-<span class="c1"># Resolver Ax = b</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solución [x, y, z]:&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Solución [x, y, z]: [ 1. -2.  3.]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="nota admonition">
-<p class="admonition-title"><strong>Nota</strong></p>
-<p>Estos ejercicios deben realizarse con la matriz de coeficiente cuadrada.</p>
-</div>
-<div class="tip admonition">
-<p class="admonition-title"><strong>Ejercicio 1</strong></p>
-<p>Determina la solución del sistema (puedes hacerlo con <code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve</span></code> o analizando si hay infinitas soluciones):</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{cases}
-2x - y = 0\\
-x + 3y = 0
-\end{cases}
-\end{split}\]</div>
-<ol class="arabic simple">
-<li><p>Escribe la matriz <span class="math notranslate nohighlight">\(A\)</span> y el vector <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>.</p></li>
-<li><p>Resuelve el sistema en Python.</p></li>
-<li><p>Verifica sustituyendo la solución en las ecuaciones.</p></li>
-</ol>
-</div>
-<div class="tip admonition">
-<p class="admonition-title"><strong>Ejercicio 2</strong></p>
-<p>Resuelve el sistema homogéneo:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{cases}
-x + y + z = 0\\
-2x - y + 3z = 0\\
--x + 4y - z = 0
-\end{cases}
-\end{split}\]</div>
-<ol class="arabic simple">
-<li><p>Construye <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(\mathbf{b}=\mathbf{0}\)</span>.</p></li>
-<li><p>Usa Python para encontrar la solución.</p></li>
-<li><p>¿La solución es única o hay infinitas? Explica brevemente.</p></li>
-</ol>
-</div>
-<div class="tip admonition">
-<p class="admonition-title"><strong>Ejercicio 3</strong></p>
-<p>Resuelve el sistema:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{cases}
-x + 2y = 5\\
-3x - y = 4
-\end{cases}
-\end{split}\]</div>
-<ol class="arabic simple">
-<li><p>Define <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>.</p></li>
-<li><p>Resuelve con <code class="docutils literal notranslate"><span class="pre">np.linalg.solve(A,</span> <span class="pre">b)</span></code>.</p></li>
-<li><p>Comprueba el resultado.</p></li>
-</ol>
-</div>
-<div class="tip admonition">
-<p class="admonition-title"><strong>Ejercicio 4</strong></p>
-<p>Resuelve el sistema:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{cases}
-2x + y - z = 1\\
--x + 3y + 2z = 12\\
-3x - 2y + 4z = 7
-\end{cases}
-\end{split}\]</div>
-<ol class="arabic simple">
-<li><p>Escribe la matriz aumentada.</p></li>
-<li><p>Resuelve en Python.</p></li>
-<li><p>Verifica la solución.</p></li>
-</ol>
-</div>
-<div class="tip admonition">
-<p class="admonition-title"><strong>Ejercicio 5</strong></p>
-<p>Resuelve el sistema:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{cases}
-x + y + z + w = 10\\
-2x - y + 3z - w = 5\\
--x + 4y - z + 2w = 8\\
-3x + 2y + z - 4w = 2
-\end{cases}
-\end{split}\]</div>
-<ol class="arabic simple">
-<li><p>Construye <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>.</p></li>
-<li><p>Resuelve con <code class="docutils literal notranslate"><span class="pre">NumPy</span></code>.</p></li>
-<li><p>Comprueba que tu solución satisface las 4 ecuaciones.</p></li>
-</ol>
-</div>
-</section>
 <section id="diccionarios">
-<h3><strong>1.3.8 Diccionarios</strong><a class="headerlink" href="#diccionarios" title="Link to this heading">#</a></h3>
+<h3><strong>1.3.7 Diccionarios</strong><a class="headerlink" href="#diccionarios" title="Link to this heading">#</a></h3>
 <p>Los <strong>diccionarios</strong> son una estructura de datos que almacena pares de clave-valor. Cada clave es única y se utiliza para acceder a su valor asociado. Los diccionarios son útiles cuando se necesita un mapeo entre elementos, como por ejemplo, asociar nombres con números de teléfono.</p>
 <p>Las características de los diccionarios son:</p>
 <ul class="simple">
@@ -1383,6 +1161,15 @@ x + y + z + w = 10\\
         <p class="prev-next-title"><strong>Álgebra lineal con Python</strong></p>
       </div>
     </a>
+    <a class="right-next"
+       href="modulo_2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Módulo 2: Matrices y Sistema de ecuaciones lineales</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1417,8 +1204,7 @@ x + y + z + w = 10\\
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-con-numpy"><strong>1.3.4 Vector con NumPy</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tuplas"><strong>1.3.5 Tuplas</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conjuntos"><strong>1.3.6 Conjuntos</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices"><strong>1.3.7 Matrices</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diccionarios"><strong>1.3.8 Diccionarios</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diccionarios"><strong>1.3.7 Diccionarios</strong></a></li>
 </ul>
 </li>
 </ul>

@@ -1,0 +1,1217 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Módulo 2: Matrices y Sistema de ecuaciones lineales &#8212; Algebra lineal con Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=6c7211e7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modulo_2';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Módulo 1: Conceptos de Python" href="modulo_1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.jpg" class="logo__image only-light" alt="Algebra lineal con Python - Home"/>
+    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Algebra lineal con Python - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Álgebra lineal con Python
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="modulo_1.html"><strong>Módulo 1: Conceptos de Python</strong></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Módulo 2: Matrices y Sistema de ecuaciones lineales</strong></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmodulo_2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/modulo_2.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Módulo 2: Matrices y Sistema de ecuaciones lineales</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices"><strong>2.1 Matrices</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dimension-de-una-matriz"><strong>Dimensión de una matriz:</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagonal-principal-de-una-matriz"><strong>Diagonal principal de una matriz</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operaciones-con-matrices"><strong>Operaciones con matrices</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transpuesta-de-una-matriz"><strong>Transpuesta de una matriz</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplicacion-de-matrices"><strong>Multiplicación de matrices</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sistema-de-ecuaciones-lineales-con-matrices"><strong>Sistema de ecuaciones lineales con matrices</strong></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="modulo-2-matrices-y-sistema-de-ecuaciones-lineales">
+<h1><strong>Módulo 2: Matrices y Sistema de ecuaciones lineales</strong><a class="headerlink" href="#modulo-2-matrices-y-sistema-de-ecuaciones-lineales" title="Link to this heading">#</a></h1>
+<p>El objetivo de este capítulo es estudiar y comprender las propiedades fundamentales de las principales operaciones algebraicas que se realizan con matrices. Para ello, se analizarán sus definiciones y reglas de cálculo, así como las condiciones bajo las cuales se cumplen propiedades como la conmutatividad, la asociatividad y la distributividad. Además, se abordará el determinante como una herramienta clave asociada a las matrices, estudiando sus propiedades, su cálculo y su utilidad en problemas como la invertibilidad y la resolución de sistemas de ecuaciones. Al finalizar, el lector contará con una base sólida para manipular matrices con rigor y aplicar estos conceptos en diversos contextos matemáticos.</p>
+<section id="matrices">
+<h2><strong>2.1 Matrices</strong><a class="headerlink" href="#matrices" title="Link to this heading">#</a></h2>
+<p>Las matrices son una herramienta fundamental para organizar y representar datos de forma ordenada. Permiten sistematizar cálculos que pueden resultar laboriosos y, por ello, facilitan el trabajo con grandes cantidades de información. Además, son muy útiles para modelar y analizar fenómenos complejos en matemáticas y en otras áreas del conocimiento, ya que ayudan a describir relaciones entre varias variables y a resolver problemas de manera más eficiente.</p>
+<p>Las <strong>matrices</strong> son arreglos rectangulares de elementos, es decir,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = \begin{bmatrix}
+a_{11} &amp; a_{12} &amp; ⋯ &amp; a_{1n}\\
+a_{21} &amp; a_{22} &amp; ⋯ &amp; a_{2n}\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+a_{m1} &amp; a_{m2} &amp; ⋯ &amp; a_{mn}\\
+\end{bmatrix}
+_{m \times n}
+\end{split}\]</div>
+<p>donde <span class="math notranslate nohighlight">\(m\)</span> es el número de filas y <span class="math notranslate nohighlight">\(n\)</span> es el número de columnas. Adem’as, <span class="math notranslate nohighlight">\(A=\left(a_{ij}\right)_{m\times n}\)</span> para  <span class="math notranslate nohighlight">\(i=1, 2,\ldots,m\)</span> y <span class="math notranslate nohighlight">\(j=1, 2,\ldots,n\)</span>.</p>
+<p>En Python, las matrices pueden ser implementadas usando listas de listas o utilizando bibliotecas como <strong>NumPy</strong>, que proporciona una funcionalidad más eficiente para el manejo de matrices.</p>
+<p>Las matrices poseen varias características que las hacen útiles para muchas aplicaciones, especialmente en matemáticas, ciencia de datos, y programación científica:</p>
+<ul class="simple">
+<li><p>Dimensionalidad: Las matrices son bidimensionales, organizadas en filas y columnas. Además, se pueden extender a más dimensiones, formando tensores en contextos más avanzados.</p></li>
+<li><p>Homogeneidad: Los elementos de una matriz deben ser del mismo tipo (e.g., todos enteros, todos flotantes).</p></li>
+<li><p>Indexación: Los elementos de una matriz se acceden utilizando un par de índices: uno para la fila y otro para la columna.</p></li>
+<li><p>Mutabilidad: Las matrices pueden ser modificadas después de su creación, permitiendo la actualización de elementos individuales o la reasignación de filas y columnas completas.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Creacion de matriz</span>
+<span class="n">matriz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="n">matriz</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Acceso a elementos, filas y columnas:</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Acceder al elemento en la primera fila, segunda columna</span>
+<span class="n">matriz</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Acceder al elemento en la tercera fila, primera columna</span>
+<span class="n">matriz</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Acceder a la segunda columna</span>
+<span class="n">matriz</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Acceder a la segunda fila</span>
+<span class="n">fila</span> <span class="o">=</span> <span class="n">matriz</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dimension-de-una-matriz">
+<h2><strong>Dimensión de una matriz:</strong><a class="headerlink" href="#dimension-de-una-matriz" title="Link to this heading">#</a></h2>
+<p>En <code class="docutils literal notranslate"><span class="pre">NumPy</span></code>, la propiedad <code class="docutils literal notranslate"><span class="pre">shape</span></code> devuelve una tupla <code class="docutils literal notranslate"><span class="pre">(m,</span> <span class="pre">n)</span></code> con el número de filas y columnas respectivamente. La propiedad <code class="docutils literal notranslate"><span class="pre">size</span></code> el número total de elementos.</p>
+<p>Para obtener filas y columnas por separado se puede hacer:\n
+- <code class="docutils literal notranslate"><span class="pre">filas,</span> <span class="pre">columnas</span> <span class="pre">=</span> <span class="pre">matriz.shape</span></code></p>
+<p>A continuación se muestran ejemplos en Python usando la matriz <code class="docutils literal notranslate"><span class="pre">matriz</span></code> definida anteriormente.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dimensión (filas, columnas)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Shape (filas, columnas):&quot;</span><span class="p">,</span> <span class="n">matriz</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># Número total de elementos</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total de elementos (size):&quot;</span><span class="p">,</span> <span class="n">matriz</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="diagonal-principal-de-una-matriz">
+<h2><strong>Diagonal principal de una matriz</strong><a class="headerlink" href="#diagonal-principal-de-una-matriz" title="Link to this heading">#</a></h2>
+<p>La <strong>diagonal principal</strong> de una matriz es el conjunto de elementos cuyos índices de fila y columna son iguales. Es decir,</p>
+<div class="math notranslate nohighlight">
+\[
+a_{ij} \text{ pertenece a la diagonal principal si } i = j.
+\]</div>
+<p>Se extiende desde la <strong>esquina superior izquierda</strong> hasta la <strong>esquina inferior derecha</strong> de la matriz. En codigo</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diagonal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">matriz</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">diagonal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="operaciones-con-matrices">
+<h2><strong>Operaciones con matrices</strong><a class="headerlink" href="#operaciones-con-matrices" title="Link to this heading">#</a></h2>
+<p>Sean <span class="math notranslate nohighlight">\(A=(a_{ij})_{m\times n}\)</span> y <span class="math notranslate nohighlight">\(B=(b_{ij})_{m\times n}\)</span> matrices con componentes reales y sea <span class="math notranslate nohighlight">\(\alpha \in \R\)</span>.
+Entonces</p>
+<ul class="simple">
+<li><p>La <strong>suma</strong> de <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(B\)</span> es la matriz</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+A+B=(a_{ij}+b_{ij})_{m\times n}. 
+\]</div>
+<ul class="simple">
+<li><p>El <strong>producto de un escalar</strong> <span class="math notranslate nohighlight">\(\alpha\)</span> <strong>por una matriz</strong> <span class="math notranslate nohighlight">\(A\)</span> es la matriz</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\alpha A=(\alpha a_{ij})_{m\times n}.
+\]</div>
+<p>Veamos unos ejemplos</p>
+<div class="attention admonition">
+<p class="admonition-title"><strong>Ejemplo 1</strong></p>
+<p>Sean</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A=\begin{bmatrix}
+2 &amp; 3\\
+4 &amp; 3      
+\end{bmatrix},
+\quad
+B=\begin{bmatrix}
+1 &amp; 4\\
+\frac{1}{2} &amp; 3     
+\end{bmatrix},
+\quad
+C=\begin{bmatrix}
+3 &amp; 1\\
+1 &amp; 2\\
+2 &amp; 4        
+\end{bmatrix}
+\end{split}\]</div>
+<p>y <span class="math notranslate nohighlight">\(\alpha=3\)</span>.</p>
+<p>Hallar <span class="math notranslate nohighlight">\(A+B\)</span>, <span class="math notranslate nohighlight">\(\alpha B\)</span> y <span class="math notranslate nohighlight">\(A+C\)</span>.</p>
+</div>
+<p><strong>Solución</strong></p>
+<p>Hagamos los ejercicios con python</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># importemos numpy</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definamos las matrices A y B y alpha</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="n">alpha</span> <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Primero hagamos <span class="math notranslate nohighlight">\(A + B\)</span></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">suma_AB</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">B</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">suma_AB</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Realicemos <span class="math notranslate nohighlight">\(\alpha B\)</span></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">producto_alphaB</span> <span class="o">=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">B</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">producto_alphaB</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Desarrollemos <span class="math notranslate nohighlight">\(A+C\)</span></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">suma_AC</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">C</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">suma_AC</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">suma_AC</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">C</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">suma_AC</span><span class="p">)</span>
+
+<span class="ne">ValueError</span>: operands could not be broadcast together with shapes (2,2) (3,2) 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nos sale error porque no podemos realizar sumas de matrices con diferentes tamaños.</p>
+<div class="tip admonition">
+<p class="admonition-title"><strong>Ejercicio 1 al 6</strong></p>
+<p>En los ejercicios del 1 al 6, encuentre:<br />
+a) <span class="math notranslate nohighlight">\(A+B\)</span>, b) <span class="math notranslate nohighlight">\(A-B\)</span>, c) <span class="math notranslate nohighlight">\(2A\)</span>, d) <span class="math notranslate nohighlight">\(2A-B\)</span>.</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(A=\begin{bmatrix} 1 &amp; -1 \\ 2 &amp; -1 \end{bmatrix}\)</span>,
+<span class="math notranslate nohighlight">\(B=\begin{bmatrix} 2 &amp; -1 \\ -1 &amp; 8 \end{bmatrix}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A=\begin{bmatrix} 1 &amp; 2 \\ 2 &amp; 1 \end{bmatrix}\)</span>,
+<span class="math notranslate nohighlight">\(B=\begin{bmatrix} -3 &amp; -2 \\ 4 &amp; 2 \end{bmatrix}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A=\begin{bmatrix} 6 &amp; -1 \\ 2 &amp; 4 \\ -3 &amp; 5 \end{bmatrix}\)</span>,
+<span class="math notranslate nohighlight">\(B=\begin{bmatrix} 1 &amp; 4 \\ -1 &amp; 5 \\ 1 &amp; 10 \end{bmatrix}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A=\begin{bmatrix} 2 &amp; 1 &amp; 1 \\ -1 &amp; -1 &amp; 4 \end{bmatrix}\)</span>,
+<span class="math notranslate nohighlight">\(B=\begin{bmatrix} 2 &amp; -3 &amp; 4 \\ -3 &amp; 1 &amp; -2 \end{bmatrix}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A=\begin{bmatrix} 2 &amp; 2 &amp; -1 &amp; 0 &amp; 1 \\ 1 &amp; -2 &amp; 0 &amp; -1 &amp; 1 \end{bmatrix}\)</span>,
+<span class="math notranslate nohighlight">\(B=\begin{bmatrix} 1 &amp; 1 &amp; -1 &amp; 1 &amp; 0 \\ -3 &amp; 4 &amp; 9 &amp; -6 &amp; -7 \end{bmatrix}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A=\begin{bmatrix} 3 \\ -2 \\ 1 \end{bmatrix}\)</span>,
+<span class="math notranslate nohighlight">\(B=\begin{bmatrix} -4 \\ 6 \\ 2 \end{bmatrix}\)</span></p></li>
+</ol>
+</div>
+<div class="tip admonition">
+<p class="admonition-title"><strong>Ejercicio 7</strong></p>
+<p>Encuentre <span class="math notranslate nohighlight">\(a_{21}\)</span> y <span class="math notranslate nohighlight">\(b_{13}\)</span>, donde <span class="math notranslate nohighlight">\(C = 2A - 3B\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A=\begin{bmatrix}
+5 &amp; 4 &amp; 4\\
+-3 &amp; 1 &amp; 2
+\end{bmatrix}
+\qquad
+B=\begin{bmatrix}
+1 &amp; 2 &amp; -7\\
+0 &amp; -5 &amp; 1
+\end{bmatrix}
+\end{split}\]</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title"><strong>Ejercicio 8</strong></p>
+<p>Encuentre <span class="math notranslate nohighlight">\(a_{21}\)</span> y <span class="math notranslate nohighlight">\(b_{13}\)</span>, donde <span class="math notranslate nohighlight">\(C = 2A - 3B\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A=\begin{bmatrix}
+5 &amp; 4 &amp; 4\\
+-3 &amp; 1 &amp; 2
+\end{bmatrix}
+\qquad
+B=\begin{bmatrix}
+1 &amp; 2 &amp; -7\\
+0 &amp; -5 &amp; 1
+\end{bmatrix}
+\end{split}\]</div>
+</div>
+</section>
+<section id="transpuesta-de-una-matriz">
+<h2><strong>Transpuesta de una matriz</strong><a class="headerlink" href="#transpuesta-de-una-matriz" title="Link to this heading">#</a></h2>
+<p>Dada una matriz <span class="math notranslate nohighlight">\(A=(a_{ij})_{m\times n}\)</span>, la <strong>transpuesta</strong> de <span class="math notranslate nohighlight">\(A\)</span>, es una matriz de <span class="math notranslate nohighlight">\(n\times m\)</span> que se obtiene al cambiar las filas por columnas en la matriz <span class="math notranslate nohighlight">\(A\)</span>; y se denota por <span class="math notranslate nohighlight">\(A^{\texttt{T}}\)</span>. Además,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+A=(a_{ij})_{m\times n}\\
+A^{\texttt{T}}=(a_{ji})_{n\times m}
+\end{cases}
+\end{split}\]</div>
+<div class="attention admonition">
+<p class="admonition-title"><strong>Ejemplo 2</strong></p>
+<p>Sea la matriz</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+B=\begin{bmatrix}
+2 &amp; 4 &amp; 5 &amp; 7\\
+1 &amp; 2 &amp; 4 &amp; 0\\
+-1 &amp; 2 &amp; 0 &amp; -3
+\end{bmatrix}
+\end{split}\]</div>
+<p>Halle la matriz transpuesta <span class="math notranslate nohighlight">\(B^T\)</span>.</p>
+</div>
+<p><strong>Solución</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="n">B_transpuesta</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">T</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">B_transpuesta</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Una matriz cuadrada se denomina <strong>simétrica</strong> si <span class="math notranslate nohighlight">\(A^{\texttt{T}}=A\)</span>; y <strong>antisimétrica</strong> si <span class="math notranslate nohighlight">\(A^{\texttt{T}}=-A\)</span>.</p>
+<div class="attention admonition">
+<p class="admonition-title"><strong>Ejemplo 3</strong></p>
+<p>Pruebe que</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A=\begin{bmatrix}
+1 &amp; 3\\
+3 &amp; 2             
+\end{bmatrix}
+\end{split}\]</div>
+<p>es simétrica y</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+B=\begin{bmatrix}
+0 &amp; 2\\
+-2 &amp; 0    
+\end{bmatrix}
+\end{split}\]</div>
+<p>es antisimétrica.</p>
+</div>
+<p><strong>Solución</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definamos las matrices</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Verifiquemos que <span class="math notranslate nohighlight">\(A\)</span> es simétrica</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verificar si A es simétrica (A = A^T)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span> <span class="o">==</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+<span class="c1"># Verificar si B es antisimétrica (B^T = -B)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">B</span><span class="o">.</span><span class="n">T</span> <span class="o">==</span> <span class="o">-</span><span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="multiplicacion-de-matrices">
+<h2><strong>Multiplicación de matrices</strong><a class="headerlink" href="#multiplicacion-de-matrices" title="Link to this heading">#</a></h2>
+<p>Sean <span class="math notranslate nohighlight">\(A=(a_{ij})_{m\times n}\)</span> y <span class="math notranslate nohighlight">\(B=(b_{ij})_{n\times p}\)</span>. Digamos</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A=\begin{bmatrix}
+a_{11}&amp; a_{12}&amp;\cdots&amp;a_{1n}\\
+a_{21}&amp;a_{22}&amp;\cdots&amp; a_{2n}\\
+\vdots&amp;\vdots &amp; \ddots&amp;\vdots \\
+a_{m1}&amp;a_{m2}&amp;\cdots&amp; a_{mn}
+\end{bmatrix} \hspace{4mm} \text{y} \hspace{4mm}
+B=\begin{bmatrix}
+b_{11}&amp; b_{12}&amp;\cdots&amp;b_{1p}\\
+b_{21}&amp;b_{22}&amp;\cdots&amp; b_{2p}\\
+\vdots&amp;\vdots &amp; \ddots&amp;\vdots \\
+b_{n1}&amp;b_{n2}&amp;\cdots&amp; b_{np}
+\end{bmatrix}.
+\end{split}\]</div>
+<p>Definamos el <strong>producto</strong> de <span class="math notranslate nohighlight">\(A\)</span> por <span class="math notranslate nohighlight">\(B\)</span> notado por <span class="math notranslate nohighlight">\(AB\)</span> de la siguiente manera:</p>
+<div class="math notranslate nohighlight">
+\[
+AB=(c_{ij})_{m\times p}
+\]</div>
+<p>donde cada <span class="math notranslate nohighlight">\(c_{ij}\)</span> es el producto de la <span class="math notranslate nohighlight">\(i\)</span>-ésima fila de <span class="math notranslate nohighlight">\(A\)</span> por la <span class="math notranslate nohighlight">\(j\)</span>-ésima columna de <span class="math notranslate nohighlight">\(B\)</span>, esto es:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+c_{ij}=A_{(i)}B^{(j)}=
+\begin{pmatrix}
+a_{i1}&amp;a_{i2}&amp;\cdots&amp;a_{in}         
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+b_{1j}\\
+b_{2j}\\
+\vdots\\
+b_{nj}
+\end{pmatrix}=
+a_{i1}b_{1j}+a_{i2}b_{2j}+\cdots+a_{in}b_{nj}=\sum_{s=1}^{n}a_{is}b_{sj}
+\end{split}\]</div>
+<p>para <span class="math notranslate nohighlight">\(i=1,2,\cdots,m\)</span>; <span class="math notranslate nohighlight">\(j=1,2,\cdots,p\)</span>.</p>
+<div class="attention admonition">
+<p class="admonition-title"><strong>Ejemplo 4</strong></p>
+<p>Sean</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A=\begin{bmatrix}
+2 &amp; 4\\
+1 &amp; 0
+\end{bmatrix}
+\qquad
+B=\begin{bmatrix}
+2 &amp; 1 &amp; 2\\
+3 &amp; 0 &amp; -1
+\end{bmatrix}
+\end{split}\]</div>
+<p>Hallar <span class="math notranslate nohighlight">\(AB\)</span> y <span class="math notranslate nohighlight">\(BA\)</span>.</p>
+</div>
+<p><strong>Solución</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definición de matrices</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Multipliquemos las matrices</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Multiplicación AB</span>
+<span class="n">AB</span> <span class="o">=</span> <span class="n">A</span> <span class="o">@</span> <span class="n">B</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">AB</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Multiplicación BA</span>
+<span class="n">BA</span> <span class="o">=</span> <span class="n">B</span> <span class="o">@</span> <span class="n">A</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">BA</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Multiplicación BA</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">BA</span> <span class="o">=</span> <span class="n">B</span> <span class="o">@</span> <span class="n">A</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">BA</span><span class="p">)</span>
+
+<span class="nn">ValueError: matmul: Input operand 1 has a mismatch</span> in <span class="ni">its core dimension 0, with gufunc signature (n?,k),(k,m?)-&gt;(n?,m?) </span><span class="nt">(size 2 is different from 3)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Esta multiplicación no se puede realizar porque el número de columnas de la matriz <span class="math notranslate nohighlight">\(B\)</span> no coincide con el número de filas de la matriz <span class="math notranslate nohighlight">\(A\)</span></p></li>
+</ul>
+<div class="tip admonition">
+<p class="admonition-title"><strong>Ejercicio 9 al 12</strong></p>
+<p>En los ejercicios del 9 al 12, encuentre a) <span class="math notranslate nohighlight">\(AB\)</span> y b) <span class="math notranslate nohighlight">\(BA\)</span> (si están definidos).</p>
+<ol class="arabic" start="9">
+<li><div class="math notranslate nohighlight">
+\[\begin{split}
+A=\begin{bmatrix}
+2 &amp; 1\\
+-3 &amp; 4\\
+1 &amp; 6
+\end{bmatrix},
+\quad
+B=\begin{bmatrix}
+0 &amp; -1 &amp; 0\\
+4 &amp; 0 &amp; 2\\
+8 &amp; -1 &amp; 7
+\end{bmatrix}
+\end{split}\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[\begin{split}
+A=\begin{bmatrix}
+0 &amp; -1 &amp; 0\\
+4 &amp; 0 &amp; 2\\
+8 &amp; -1 &amp; 7
+\end{bmatrix},
+\quad
+B=\begin{bmatrix}
+2\\
+-3\\
+1
+\end{bmatrix}
+\end{split}\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[\begin{split}
+A=\begin{bmatrix}
+-1 &amp; 3\\
+0 &amp; -5\\
+0 &amp; 2
+\end{bmatrix},
+\quad
+B=\begin{bmatrix}
+1 &amp; 2\\
+0 &amp; 7
+\end{bmatrix}
+\end{split}\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[\begin{split}
+A=\begin{bmatrix}
+1 &amp; 0 &amp; 0\\
+0 &amp; 4 &amp; 0\\
+0 &amp; 0 &amp; -2
+\end{bmatrix},
+\quad
+B=\begin{bmatrix}
+3 &amp; 0 &amp; 0\\
+0 &amp; -1 &amp; 0\\
+0 &amp; 0 &amp; 5
+\end{bmatrix}
+\end{split}\]</div>
+</li>
+</ol>
+</div>
+</section>
+<section id="sistema-de-ecuaciones-lineales-con-matrices">
+<h2><strong>Sistema de ecuaciones lineales con matrices</strong><a class="headerlink" href="#sistema-de-ecuaciones-lineales-con-matrices" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Hagamos un ejemplo de sistema de ecuaciones lineales</p></li>
+</ol>
+<div class="attention admonition">
+<p class="admonition-title"><strong>Ejemplo 5</strong></p>
+<p>Resolver el siguiente sistema de ecuaciones lineales:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{cases}
+2x+y+z&amp;=3\\
+-x+2y+2z&amp;=1\\
+x-y-3z&amp;=-6 
+\end{cases}\end{split}\]</div>
+</div>
+<p><strong>Solución</strong>.</p>
+<p>Primero debemos convertir el SEL en una matriz aumentada y de alli, obtener la matriz de coeficientes y terminos independientes:</p>
+<ul class="simple">
+<li><p>La matriz aumentada es:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[\begin{array}{ccc|c}
+2 &amp; 1 &amp; 1 &amp; 3\\
+-1 &amp; 2 &amp; 2 &amp; 1\\
+1 &amp; -1 &amp; -3 &amp; -6
+\end{array}\right]
+\end{split}\]</div>
+<ul class="simple">
+<li><p>La matriz de coeficientes es:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A=\begin{bmatrix}
+2 &amp; 1 &amp; 1\\
+-1 &amp; 2 &amp; 2\\
+1 &amp; -1 &amp; -3
+\end{bmatrix}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>El vector de términos independientes es:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{b}=\begin{bmatrix}
+3\\
+1\\
+-6
+\end{bmatrix}
+\end{split}\]</div>
+<p>Ahora, escribamos las matrices de coeficientes y el vector de términos independientes con python usando <code class="docutils literal notranslate"><span class="pre">NumPy</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Matriz de coeficientes A y vector b</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mi">2</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">],</span>
+              <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">2</span><span class="p">],</span>
+              <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="c1"># Resolver Ax = b</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solución [x, y, z]:&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="nota admonition">
+<p class="admonition-title"><strong>Nota</strong></p>
+<p>Estos ejercicios deben realizarse con la matriz de coeficiente cuadrada.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title"><strong>Ejercicio 13</strong></p>
+<p>Determina la solución del sistema (puedes hacerlo con <code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve</span></code> o analizando si hay infinitas soluciones):</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+2x - y = 0\\
+x + 3y = 0
+\end{cases}
+\end{split}\]</div>
+<ol class="arabic simple">
+<li><p>Escribe la matriz <span class="math notranslate nohighlight">\(A\)</span> y el vector <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>.</p></li>
+<li><p>Resuelve el sistema en Python.</p></li>
+<li><p>Verifica sustituyendo la solución en las ecuaciones.</p></li>
+</ol>
+</div>
+<div class="tip admonition">
+<p class="admonition-title"><strong>Ejercicio 14</strong></p>
+<p>Resuelve el sistema homogéneo:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+x + y + z = 0\\
+2x - y + 3z = 0\\
+-x + 4y - z = 0
+\end{cases}
+\end{split}\]</div>
+<ol class="arabic simple">
+<li><p>Construye <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(\mathbf{b}=\mathbf{0}\)</span>.</p></li>
+<li><p>Usa Python para encontrar la solución.</p></li>
+<li><p>¿La solución es única o hay infinitas? Explica brevemente.</p></li>
+</ol>
+</div>
+<div class="tip admonition">
+<p class="admonition-title"><strong>Ejercicio 15</strong></p>
+<p>Resuelve el sistema:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+x + 2y = 5\\
+3x - y = 4
+\end{cases}
+\end{split}\]</div>
+<ol class="arabic simple">
+<li><p>Define <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>.</p></li>
+<li><p>Resuelve con <code class="docutils literal notranslate"><span class="pre">np.linalg.solve(A,</span> <span class="pre">b)</span></code>.</p></li>
+<li><p>Comprueba el resultado.</p></li>
+</ol>
+</div>
+<div class="tip admonition">
+<p class="admonition-title"><strong>Ejercicio 16</strong></p>
+<p>Resuelve el sistema:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+2x + y - z = 1\\
+-x + 3y + 2z = 12\\
+3x - 2y + 4z = 7
+\end{cases}
+\end{split}\]</div>
+<ol class="arabic simple">
+<li><p>Escribe la matriz aumentada.</p></li>
+<li><p>Resuelve en Python.</p></li>
+<li><p>Verifica la solución.</p></li>
+</ol>
+</div>
+<div class="tip admonition">
+<p class="admonition-title"><strong>Ejercicio 17</strong></p>
+<p>Resuelve el sistema:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+x + y + z + w = 10\\
+2x - y + 3z - w = 5\\
+-x + 4y - z + 2w = 8\\
+3x + 2y + z - 4w = 2
+\end{cases}
+\end{split}\]</div>
+<ol class="arabic simple">
+<li><p>Construye <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>.</p></li>
+<li><p>Resuelve con <code class="docutils literal notranslate"><span class="pre">NumPy</span></code>.</p></li>
+<li><p>Comprueba que tu solución satisface las 4 ecuaciones.</p></li>
+</ol>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="modulo_1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Módulo 1: Conceptos de Python</strong></p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices"><strong>2.1 Matrices</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dimension-de-una-matriz"><strong>Dimensión de una matriz:</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagonal-principal-de-una-matriz"><strong>Diagonal principal de una matriz</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operaciones-con-matrices"><strong>Operaciones con matrices</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transpuesta-de-una-matriz"><strong>Transpuesta de una matriz</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplicacion-de-matrices"><strong>Multiplicación de matrices</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sistema-de-ecuaciones-lineales-con-matrices"><strong>Sistema de ecuaciones lineales con matrices</strong></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Carlos de Oro Aguado
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026, Msc Carlos de Oro Aguado.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
